@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:georss="http://www.georss.org/georss" xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <updated>2013-01-28T01:22:06Z</updated>
+    <title>USGS M 1.0+ Earthquakes</title>
+    <subtitle>Real-time, worldwide earthquake list for the past hour</subtitle>
+    <link rel="self" href="http://earthquake.usgs.gov/earthquakes/feed/atom/1.0/hour"/>
+    <link href="http://earthquake.usgs.gov/earthquakes/"/>
+    <author>
+        <name>U.S. Geological Survey</name>
+    </author>
+    <id>http://earthquake.usgs.gov/</id>
+    <icon>/favicon.ico</icon>
+    <entry>
+        <id>urn:earthquake-usgs-gov:ak:10645999</id>
+        <title>M 1.5, 11km SSW of Ester, Alaska</title>
+        <dc:date>2013-01-28T00:58:15Z</dc:date>
+        <updated>2013-01-28T00:59:39Z</updated>
+        <link rel="alternate" type="text/html" href="http://earthquake.usgs.gov/earthquakes/eventpage/ak10645999"/>
+        <summary type="html"><![CDATA[
+			<img src="/images/globes/65_-150.jpg" align="left" 
+					alt="64.7494 -148.0666" hspace="20"/>
+			<p>Monday, January 28, 2013 00:58:15 UTC<br/>Sunday, January 27, 2013 15:58:15 at epicenter</p>
+			<p><strong>Depth</strong>: 19.90 km (12.37 mi)</p>
+		]]>
+        </summary>
+        <georss:point>64.7494 -148.0666</georss:point>
+        <georss:elev>19.9</georss:elev>
+        <category label="Age" term="Past Hour"/>
+        <category label="Magnitude" term="1.5"/>
+    </entry>
+    <entry>
+        <id>urn:earthquake-usgs-gov:ci:15278433</id>
+        <title>M 1.7, 12km ESE of Rosamond, California</title>
+        <dc:date>2013-01-28T00:49:32Z</dc:date>
+        <updated>2013-01-28T00:51:59Z</updated>
+        <link rel="alternate" type="text/html" href="http://earthquake.usgs.gov/earthquakes/eventpage/ci15278433"/>
+        <summary type="html"><![CDATA[
+			<img src="/images/globes/35_-120.jpg" align="left" 
+					alt="34.8313 -118.0367" hspace="20"/>
+			<p>Monday, January 28, 2013 00:49:32 UTC<br/>Sunday, January 27, 2013 16:49:32 at epicenter</p>
+			<p><strong>Depth</strong>: 0.10 km (0.06 mi)</p>
+		]]>
+        </summary>
+        <georss:point>34.8313 -118.0367</georss:point>
+        <georss:elev>0.1</georss:elev>
+        <category label="Age" term="Past Hour"/>
+        <category label="Magnitude" term="1.7"/>
+    </entry>
+</feed>
