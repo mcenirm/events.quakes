@@ -1,8 +1,6 @@
 package ed3.events.quakes;
 
 import com.sun.syndication.feed.module.georss.GeoRSSModule;
-import com.sun.syndication.feed.module.georss.geometries.AbstractGeometry;
-import com.sun.syndication.feed.module.georss.geometries.Point;
 import com.sun.syndication.feed.module.georss.geometries.Position;
 import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndLinkImpl;

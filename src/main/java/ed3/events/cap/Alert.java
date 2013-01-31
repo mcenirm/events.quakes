@@ -35,6 +35,7 @@ public class Alert {
         "urgency",
         "severity",
         "certainty",
+        "eventCode",
         "headline",
         "description",
         "web",
@@ -48,10 +49,37 @@ public class Alert {
         private String urgency;
         private String severity;
         private String certainty;
+        private EventCode eventCode;
         private String headline;
         private String description;
         private String web;
         private Area area;
+
+        @XmlType(propOrder = {
+            "valueName",
+            "value"
+        })
+        public static class EventCode {
+
+            private String valueName;
+            private String value;
+
+            public String getValueName() {
+                return valueName;
+            }
+
+            public void setValueName(String valueName) {
+                this.valueName = valueName;
+            }
+
+            public String getValue() {
+                return value;
+            }
+
+            public void setValue(String value) {
+                this.value = value;
+            }
+        }
 
         @XmlType(propOrder = {
             "areaDesc",
@@ -85,6 +113,7 @@ public class Alert {
 
         public Info(Alert alert) {
             this._alert = alert;
+            this.eventCode = new EventCode();
             this.area = new Area(this);
         }
 
@@ -128,6 +157,16 @@ public class Alert {
             this.certainty = certainty;
         }
 
+        @XmlElement
+        public EventCode getEventCode() {
+            return eventCode;
+        }
+
+        private void setEventCode(String name, String value) {
+            this.getEventCode().setValueName(name);
+            this.getEventCode().setValue(value);
+        }
+
         public String getHeadline() {
             return headline;
         }
@@ -158,7 +197,7 @@ public class Alert {
         }
 
         public void setAreaPoint(double latitude, double longitude) {
-            this.area.setPoint(latitude, longitude);
+            this.getArea().setPoint(latitude, longitude);
         }
     }
 
@@ -247,6 +286,10 @@ public class Alert {
 
     public void setInfoCertainty(String certainty) {
         this.info.setCertainty(certainty);
+    }
+
+    public void setInfoEventCode(String name, String value) {
+        this.info.setEventCode(name, value);
     }
 
     public void setInfoHeadline(String headline) {

@@ -5,11 +5,14 @@ import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.FeedException;
 import ed3.events.cap.Alert;
 import ed3.events.cap.CAPConsumer;
+import static ed3.events.cap.SAMECodes.EARTHQUAKE_WARNING;
+import static ed3.events.cap.SAMECodes.SAME;
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
 import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
@@ -32,7 +35,7 @@ public class App {
         System.out.println(feed);
         List<SyndEntryImpl> entries = feed.getEntries();
         ResteasyClient client = new ResteasyClient();
-        ResteasyWebTarget target = client.target("http://example.com/base/uri");
+        ResteasyWebTarget target = client.target("http://ed3test.itsc.uah.edu/ed3/events/new.php");
         CAPConsumer consumer = target.proxy(CAPConsumer.class);
         AlertBuilder builder = new AlertBuilder();
         for (SyndEntryImpl entry : entries) {
@@ -46,13 +49,17 @@ public class App {
             alert.setInfoUrgency("Past");
             alert.setInfoSeverity("Minor");
             alert.setInfoCertainty("Observed");
+            alert.setInfoEventCode(SAME, EARTHQUAKE_WARNING);
             String link = alert.getInfo().getWeb();
             int lastIndexOf = link.lastIndexOf('/');
             String substring = link.substring(lastIndexOf + 1);
             File alertFile = new File(substring + ".xml");
-            //Status status = consumer.newAlert(alert);
             System.out.println(alertFile);
             javax.xml.bind.JAXB.marshal(alert, alertFile);
+            Response response = consumer.newAlert(alert);
+            System.out.println(response.getStatusInfo());
+            System.out.println(response.getEntity());
+            response.close();
         }
     }
 }
